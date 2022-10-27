@@ -3,21 +3,31 @@ import styled from 'styled-components';
 
 const Avatar = styled.img`
   border-radius: 50%;
+  width: 150px;
 `;
-const UserInfo = styled.p`
-  font-size: 20px;
+const UserInfoUsername = styled.p`
+  color: #212121;
+`;
+const UserInfoTag = styled.p`
+  color: #212121;
+`;
+const UserInfoLocation = styled.p`
+  color: #212121;
 `;
 const StatsList = styled.ul`
   display: flex;
   list-style: none;
 `;
-
+const MainInfo = styled.div`
+width: 450px
+background-color: #FFF
+`;
 const StatsDescription = styled.span`
-font-size: 15px;
-`
+  font-size: 15px;
+`;
 const Stats = styled.span`
-font-size: 18px;
-`
+  font-size: 18px;
+`;
 
 export const Profile = ({
   avatar,
@@ -26,28 +36,28 @@ export const Profile = ({
   location,
   stats: { followers, likes, views },
 }) => (
-    <>
-  <div>
-    <Avatar src={avatar} alt="Avatar" />
-    <UserInfo>{username}</UserInfo>
-    <UserInfo>@{tag}</UserInfo>
-        <UserInfo>{location}</UserInfo>
-        </div>
+  <>
+    <MainInfo>
+      <Avatar src={avatar} alt="Avatar" />
+      <UserInfoUsername>{username}</UserInfoUsername>
+      <UserInfoTag>@{tag}</UserInfoTag>
+      <UserInfoLocation>{location}</UserInfoLocation>
+    </MainInfo>
     <StatsList>
       <li>
         <StatsDescription>Followers</StatsDescription>
         <Stats>{followers}</Stats>
       </li>
       <li>
-      <StatsDescription>Likes</StatsDescription>
+        <StatsDescription>Likes</StatsDescription>
         <Stats>{likes}</Stats>
       </li>
       <li>
-      <StatsDescription>Views</StatsDescription>
+        <StatsDescription>Views</StatsDescription>
         <Stats>{views}</Stats>
       </li>
     </StatsList>
-    </>
+  </>
 );
 
 Profile.propTypes = {
