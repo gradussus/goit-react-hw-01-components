@@ -2,31 +2,61 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Avatar = styled.img`
+  border: 1px solid #9c9c9c;
   border-radius: 50%;
   width: 150px;
 `;
 const UserInfoUsername = styled.p`
-  color: #212121;
+  font-weight: bold;
+  font-size: 20px;
 `;
 const UserInfoTag = styled.p`
-  color: #212121;
+  color: #9c9c9c;
+  margin-top: 5px;
+  margin-bottom: 5px;
 `;
 const UserInfoLocation = styled.p`
-  color: #212121;
+  color: #9c9c9c;
+  margin-top: 5px;
+  margin-bottom: 5px;
 `;
 const StatsList = styled.ul`
   display: flex;
   list-style: none;
+  background-color: #dedede;
+  padding-left: 0px;
+`;
+const StatsListItem = styled.li`
+  display: flex;
+  width: 100px;
+  padding: 15px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  :not(:last-child) {
+    border-right: 1px solid #9c9c9c;
+  }
 `;
 const MainInfo = styled.div`
-width: 450px
-background-color: #FFF
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 30px;
 `;
 const StatsDescription = styled.span`
   font-size: 15px;
 `;
 const Stats = styled.span`
   font-size: 18px;
+  font-weight: bold;
+`;
+const Card = styled.div`
+  max-width: 300px;
+  border-radius: 5px;
+  background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const Profile = ({
@@ -36,7 +66,7 @@ export const Profile = ({
   location,
   stats: { followers, likes, views },
 }) => (
-  <>
+  <Card>
     <MainInfo>
       <Avatar src={avatar} alt="Avatar" />
       <UserInfoUsername>{username}</UserInfoUsername>
@@ -44,20 +74,20 @@ export const Profile = ({
       <UserInfoLocation>{location}</UserInfoLocation>
     </MainInfo>
     <StatsList>
-      <li>
+      <StatsListItem>
         <StatsDescription>Followers</StatsDescription>
-        <Stats>{followers}</Stats>
-      </li>
-      <li>
+        <Stats>{followers.toLocaleString('en-EN')}</Stats>
+      </StatsListItem>
+      <StatsListItem>
         <StatsDescription>Likes</StatsDescription>
-        <Stats>{likes}</Stats>
-      </li>
-      <li>
+        <Stats>{likes.toLocaleString('en-EN')}</Stats>
+      </StatsListItem>
+      <StatsListItem>
         <StatsDescription>Views</StatsDescription>
-        <Stats>{views}</Stats>
-      </li>
+        <Stats>{views.toLocaleString('en-EN')}</Stats>
+      </StatsListItem>
     </StatsList>
-  </>
+  </Card>
 );
 
 Profile.propTypes = {
